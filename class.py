@@ -27,8 +27,14 @@ class Post:
         
     def __del__(self):
         print("글이 삭제 되었습니다.")
-        
+                        # 개발자가 주로씀 이것을 바꾸면 str과 repr 둘다 바뀌고 
     def __repr__(self): # 오버라이딩 인데 사용자가 <__main__.Post object at 0x7fd694c9a2b0> 이걸 프린트 하면 이렇게 나온다.
+        return '''       
+        제목 : {}
+        내용 : {}
+        '''.format(self.title,self.content) # 주소를 부르는건가 ? 
+                        # 사용자가 주로 쓰는데 str은 repr을 참조한다.
+    def __str__(self): # 오버라이딩 인데 사용자가 <__main__.Post object at 0x7fd694c9a2b0> 이걸 프린트 하면 이렇게 나온다.
         return '''
         제목 : {}
         내용 : {}
