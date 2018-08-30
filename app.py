@@ -40,3 +40,12 @@ def read(id):
     post = Post.query.get(id) # Post 클래스의 메소드라고 생각하는게 편하다
     #SELECT * FROM posts WHERE id = 1;
     return render_template("read.html",post=post )
+    
+@app.route("/posts/delete/<int:id>")
+def delete(id):
+    #DB에서 특정한 게시글(id)을 가져와 !
+    post = Post.query.get(id) # Post 클래스의 메소드라고 생각하는게 편하다
+    #SELECT * FROM posts WHERE id = 1;
+    db.session.delete(post)
+    db.session.commit()
+    return render_template("delete.html", post=post )
