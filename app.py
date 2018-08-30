@@ -12,8 +12,10 @@ migrate = Migrate(app,db) # flask에서 디비를 쉽게 쓰게 하기 위해 �
 
 @app.route("/")
 def index():
-    posts=Post.query.all()
+    #SELECT * FROM posts ORDER BY id DESC;
+    posts=Post.query.order_by(Post.id.desc()).all()
     #SELECT * FROM posts;
+    #asc <->desc
     return render_template("index.html", posts=posts)
     
 @app.route("/posts/new")
@@ -72,3 +74,30 @@ def update(id):
     #WHERE id = 2;
     return redirect("/posts/{}".format(post.id))
    
+   
+#Post.query.filter_by(title="1").first(
+#SELECT COUNT(*) FROM posts
+#WHERE title = '1';    
+   
+#Post.query.filter_by(title="1").all()
+#SELECT * FROM posts
+#WHERE title = '1';
+
+
+
+#Post.query.filter_by(title="1").first()
+#SELECT * FROM posts
+#WHERE title = '1';
+
+#Post.query.filter(Post.title != "1").all()
+#SELECT * FROM posts
+#WHERE title != '1';
+
+#Post.query.filter(Post.title.like("%1%")).all()
+#SELECT * FROM posts;
+#WHERE title LIKE '%1%';
+
+#from sqlarchemy import and_ , or_
+#Post.query.filter(and_(Post.title=='1' , Post.comtemt == '1')
+#SELECT * FROM posts
+#WHERE title ="1" AND content = "1"
