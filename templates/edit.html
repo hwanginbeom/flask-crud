@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block body %}
+<!--작성된 게시글을 모두 보여주는 곳  -->
+<form action="/posts/{{post.id}}/update" method="POST">
+    제목 : <input type="text" name="title" value={{post.title}} /><br>
+    내용 : <textarea name="content" value=>{{post.content}}</textarea><br>
+    <input type="submit" value="뿅!"/>
+</form>
+{% endblock %}
